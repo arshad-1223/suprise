@@ -22,13 +22,14 @@
         }
         .polaroids {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
             margin: 20px 0;
         }
         .polaroid {
-            width: 150px;
-            height: 200px;
+            width: 100px;
+            height: 130px;
             animation: float 2s infinite alternate;
             transform: rotate(-5deg);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -46,12 +47,40 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
             border-radius: 5px;
         }
         button:hover {
             background: #FF477E;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+        video {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 600px) {
+            h1, h2, p {
+                font-size: 18px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            .polaroid {
+                width: 80px;
+                height: 110px;
+            }
         }
     </style>
 </head>
@@ -59,7 +88,7 @@
     <div id="page1" class="page active">
         <h1>Happy Birthday Keerthana!</h1>
         <div class="polaroids">
-            <img src="suprise/polaraid1.jpg" alt="Polaroid 1" class="polaroid">
+            <img src="polaroid1.jpg" alt="Polaroid 1" class="polaroid">
             <img src="polaroid2.jpg" alt="Polaroid 2" class="polaroid">
             <img src="polaroid3.jpg" alt="Polaroid 3" class="polaroid">
         </div>
@@ -67,7 +96,7 @@
     </div>
 
     <div id="page2" class="page">
-        <h2>Enter Your First Nickname To Unlock Suprise</h2>
+        <h2>Enter the Password to Unlock Videos</h2>
         <input type="password" id="passwordInput" placeholder="Enter password">
         <button onclick="unlockVideos()">Unlock</button>
         <div id="videos" class="hidden">
@@ -90,7 +119,7 @@
 
         function unlockVideos() {
             const password = document.getElementById("passwordInput").value;
-            if (password === "mental") {
+            if (password === "birthday2025") {
                 document.getElementById("videos").classList.remove("hidden");
                 document.getElementById("bonusButton").classList.remove("hidden");
             } else {
