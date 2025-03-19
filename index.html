@@ -7,99 +7,100 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffecb3;
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            text-align: center;
+            color: #333;
         }
-        h1 {
-            color: #ff6f61;
-            animation: fadeIn 2s ease-in-out;
+        .page {
+            display: none;
+            padding: 20px;
+        }
+        .page.active {
+            display: block;
+        }
+        .polaroids {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
         }
         .polaroid {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px;
-            border: 2px solid #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: zoomIn 1.5s ease-in-out;
+            width: 150px;
+            height: 200px;
+            animation: float 2s infinite alternate;
+            transform: rotate(-5deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes float {
+            to {
+                transform: translateY(-10px) rotate(5deg);
+            }
         }
         .hidden {
             display: none;
         }
-        .button {
-            margin: 20px;
-            padding: 10px 20px;
-            background-color: #ff6f61;
-            color: #fff;
+        button {
+            background: #FF6F91;
+            color: white;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            padding: 10px 20px;
             font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        .button:hover {
-            background-color: #ff4d40;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        button:hover {
+            background: #FF477E;
         }
     </style>
 </head>
 <body>
-    <!-- First Page -->
-    <div id="page1">
+    <div id="page1" class="page active">
         <h1>Happy Birthday Keerthana!</h1>
-        <div class="polaroid">
-            <img src="polaroid1.jpg" alt="Polaroid 1" width="200">
+        <div class="polaroids">
+            <img src="polaroid1.jpg" alt="Polaroid 1" class="polaroid">
+            <img src="polaroid2.jpg" alt="Polaroid 2" class="polaroid">
+            <img src="polaroid3.jpg" alt="Polaroid 3" class="polaroid">
         </div>
-        <div class="polaroid">
-            <img src="polaroid2.jpg" alt="Polaroid 2" width="200">
-        </div>
-        <div class="polaroid">
-            <img src="polaroid3.jpg" alt="Polaroid 3" width="200">
-        </div>
-        <button class="button" onclick="goToPage2()">Enter the Surprise</button>
+        <button id="surpriseButton" onclick="enterPage2()">Enter the Surprise</button>
     </div>
 
-    <!-- Second Page -->
-    <div id="page2" class="hidden">
-        <h1>Special Videos</h1>
-        <video controls width="300">
-            <source src="video1.mp4" type="video/mp4">
-        </video>
-        <video controls width="300">
-            <source src="video2.mp4" type="video/mp4">
-        </video>
-        <video controls width="300">
-            <source src="video3.mp4" type="video/mp4">
-        </video>
-        <button class="button" onclick="goToPage3()">Bonus Surprise</button>
+    <div id="page2" class="page">
+        <h2>Enter the Password to Unlock Videos</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button onclick="unlockVideos()">Unlock</button>
+        <div id="videos" class="hidden">
+            <video src="video1.mp4" controls></video>
+            <video src="video2.mp4" controls></video>
+            <video src="video3.mp4" controls></video>
+        </div>
+        <button class="hidden" id="bonusButton" onclick="enterPage3()">Bonus Surprise</button>
     </div>
 
-    <!-- Final Page -->
-    <div id="page3" class="hidden">
-        <h1>Your Bonus Surprise!</h1>
-        <p>
-            Keerthana, words can't describe how much you mean to all of us. You light up our lives 
-            with your kindness, laughter, and endless positivity. Here's to celebrating not just your 
-            birthday, but the incredible person you are. Have a fantastic year ahead!
-        </p>
+    <div id="page3" class="page">
+        <h2>Keerthana, You're Amazing!</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. You deserve all the happiness in the world.</p>
     </div>
-
     <script>
-        function goToPage2() {
-            document.getElementById('page1').classList.add('hidden');
-            document.getElementById('page2').classList.remove('hidden');
+        function enterPage2() {
+            document.getElementById("page1").classList.remove("active");
+            document.getElementById("page2").classList.add("active");
         }
 
-        function goToPage3() {
-            document.getElementById('page2').classList.add('hidden');
-            document.getElementById('page3').classList.remove('hidden');
+        function unlockVideos() {
+            const password = document.getElementById("passwordInput").value;
+            if (password === "birthday2025") {
+                document.getElementById("videos").classList.remove("hidden");
+                document.getElementById("bonusButton").classList.remove("hidden");
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+
+        function enterPage3() {
+            document.getElementById("page2").classList.remove("active");
+            document.getElementById("page3").classList.add("active");
         }
     </script>
 </body>
