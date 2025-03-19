@@ -59,7 +59,7 @@
     <div id="page1" class="page active">
         <h1>Happy Birthday Keerthana!</h1>
         <div class="polaroids">
-            <img src="IMG_1148.jpg" alt="Polaroid 1" class="polaroid">
+            <img src="polaroid1.jpg" alt="Polaroid 1" class="polaroid">
             <img src="polaroid2.jpg" alt="Polaroid 2" class="polaroid">
             <img src="polaroid3.jpg" alt="Polaroid 3" class="polaroid">
         </div>
@@ -67,8 +67,8 @@
     </div>
 
     <div id="page2" class="page">
-        <h2>Enter the Password to Unlock Videos</h2>
-        <input type="password" id="passwordInput" placeholder="enter password">
+        <h2>Enter Your First Nickname To Unlock Suprise</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password">
         <button onclick="unlockVideos()">Unlock</button>
         <div id="videos" class="hidden">
             <video src="video1.mp4" controls></video>
@@ -90,7 +90,7 @@
 
         function unlockVideos() {
             const password = document.getElementById("passwordInput").value;
-            if (password === "birthday2025") {
+            if (password === "mental") {
                 document.getElementById("videos").classList.remove("hidden");
                 document.getElementById("bonusButton").classList.remove("hidden");
             } else {
