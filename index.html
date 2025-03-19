@@ -13,73 +13,77 @@
             text-align: center;
             color: #333;
         }
+
         .page {
             display: none;
             padding: 20px;
         }
+
         .page.active {
             display: block;
         }
+
         .polaroids {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
-            margin: 20px 0;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 90%;
         }
+
         .polaroid {
             width: 100px;
             height: 130px;
             animation: float 2s infinite alternate;
             transform: rotate(-5deg);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .polaroid img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
         @keyframes float {
             to {
                 transform: translateY(-10px) rotate(5deg);
             }
         }
-        .hidden {
-            display: none;
-        }
+
         button {
             background: #FF6F91;
             color: white;
             border: none;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             border-radius: 5px;
         }
+
         button:hover {
             background: #FF477E;
-        }
-        input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            max-width: 300px;
-        }
-        video {
-            max-width: 100%;
-            margin: 10px 0;
         }
 
         /* Mobile-specific styles */
         @media (max-width: 600px) {
-            h1, h2, p {
-                font-size: 18px;
+            .polaroids {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             }
-            button {
-                font-size: 14px;
-                padding: 8px 15px;
-            }
+
             .polaroid {
                 width: 80px;
                 height: 110px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 8px 15px;
             }
         }
     </style>
@@ -88,9 +92,14 @@
     <div id="page1" class="page active">
         <h1>Happy Birthday Keerthana!</h1>
         <div class="polaroids">
-            <img src="polaroid1.jpg" alt="Polaroid 1" class="polaroid">
-            <img src="polaroid2.jpg" alt="Polaroid 2" class="polaroid">
-            <img src="polaroid3.jpg" alt="Polaroid 3" class="polaroid">
+            <!-- Add as many images as you'd like -->
+            <div class="polaroid"><img src="polaroid1.jpg" alt="Polaroid 1"></div>
+            <div class="polaroid"><img src="polaroid2.jpg" alt="Polaroid 2"></div>
+            <div class="polaroid"><img src="polaroid3.jpg" alt="Polaroid 3"></div>
+            <div class="polaroid"><img src="polaroid4.jpg" alt="Polaroid 4"></div>
+            <div class="polaroid"><img src="polaroid5.jpg" alt="Polaroid 5"></div>
+            <div class="polaroid"><img src="polaroid6.jpg" alt="Polaroid 6"></div>
+            <div class="polaroid"><img src="polaroid7.jpg" alt="Polaroid 7"></div>
         </div>
         <button id="surpriseButton" onclick="enterPage2()">Enter the Surprise</button>
     </div>
@@ -111,6 +120,7 @@
         <h2>Keerthana, You're Amazing!</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. You deserve all the happiness in the world.</p>
     </div>
+
     <script>
         function enterPage2() {
             document.getElementById("page1").classList.remove("active");
