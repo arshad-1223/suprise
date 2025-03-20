@@ -100,12 +100,16 @@
             <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid3.jpg" alt="Polaroid 3"></div>
             <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid4.jpg" alt="Polaroid 4"></div>
             <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid5.jpg" alt="Polaroid 5"></div>
+            <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid5.jpg" alt="Polaroid 6"></div>
+            <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid5.jpg" alt="Polaroid 7"></div>
+            <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid5.jpg" alt="Polaroid 8"></div>
+            <div class="polaroid" onclick="toggleZoom(this)"><img src="polaroid5.jpg" alt="Polaroid 9"></div>
         </div>
         <button id="surpriseButton" onclick="enterPage2()">Enter the Surprise</button>
     </div>
 
     <div id="page2" class="page">
-        <h2>Enter the Password to Unlock Videos</h2>
+        <h2>Enter your first nickname</h2>
         <input type="password" id="passwordInput" placeholder="Enter password">
         <button onclick="unlockVideos()">Unlock</button>
         <div id="videos" class="hidden">
@@ -129,7 +133,7 @@
 
         function unlockVideos() {
             const password = document.getElementById("passwordInput").value;
-            if (password === "birthday2025") {
+            if (password === "mental") {
                 document.getElementById("videos").classList.remove("hidden");
                 document.getElementById("bonusButton").classList.remove("hidden");
             } else {
